@@ -1,0 +1,34 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple MVC Framework</title>
+  <script src="mvc.js"></script>
+  <script>
+    const myModel = new Model();
+    const myView = new View('app');
+    const myController = new Controller(myModel, myView);
+    const myRouter = new Router(myController);
+
+    myRouter.addRoute('/', 'home.html');
+    myRouter.addRoute('/about', 'about.html');
+
+    function navigateTo(route) {
+      myRouter.navigate(route);
+    }
+  </script>
+</head>
+<body>
+
+  <div id="app"></div>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="return navigateTo('/')">Home</a></li>
+      <li><a href="#" onclick="return navigateTo('/about')">About</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
